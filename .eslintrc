@@ -1,14 +1,10 @@
 {
-    "parser": "babel-eslint",
-    "extends": "airbnb-base",
-    "env": {
-        "node": true,
-        "browser": true,
-        "es6": true
-    },
-    "plugins": [
-        "react",
-        "import",
-        "jsx-a11y"
-    ]
+  "parser": "babel-eslint",
+  "extends": "airbnb-base",
+  "env": {
+    "react-native/react-native": true,
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["react", "react-native", "import", "jsx-a11y"]
 }
