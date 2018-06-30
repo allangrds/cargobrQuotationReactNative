@@ -1,6 +1,13 @@
-This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+# CARGOBR Quotation - React Native
 
-Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+![CARGOBR Quotation - React Native](https://s33.postimg.cc/bfko2hmsv/2018-06-30-011643_1920x1080_scrot.png)
+
+[![dependencies Status](https://david-dm.org/allangrds/cargobrquotationreactnative/status.svg)](https://david-dm.org/allangrds/cargobrquotationreactnative)
+[![devDependencies Status](https://david-dm.org/allangrds/cargobrquotationreactnative/dev-status.svg)](https://david-dm.org/allangrds/cargobrquotationreactnative?type=dev)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/allangrds/Terminator-React-Starter-Kit/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/davezuko/react-redux-starter-kit)
+
+Esse é um projeto para fins de estudo, onde foi utilizada a API de cotações da [CARGOBR](http://cargobr.com/). Com este aplicativo, o usuário poderá logar na sua conta e ver o preço de cotações.
 
 ## Table of Contents
 
