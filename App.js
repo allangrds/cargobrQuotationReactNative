@@ -1,60 +1,10 @@
-import React from 'react';
-import {
-  Image, StyleSheet, Text, TextInput, TouchableOpacity, View,
-} from 'react-native';
-import validation from './helpers/validation';
-import CustomTextInput from './components/CustomTextInput';
-import { primaryColor } from './config/colors';
-import { authenticate } from './config/api';
-
-export default class App extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: '',
-    };
-  }
-
-  handleOnPress = () => {
-    const usernameError = validation('username', this.state.username);
-    const passwordError = validation('password', this.state.password);
-
-    this.setState({
-      usernameError,
-      passwordError,
-    });
-
-    if (!usernameError && !passwordError) {
-      authenticate(this.state);
-    }
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image source={require('./assets/img/logo.png')} style={styles.logo} />
-        <CustomTextInput
-          onChangeText={username => this.setState({ username })}
-          placeholder="Seu emaild"
-          style={styles.input}
-          keyboardType="email-address"
-          error={this.state.usernameError}
-        />
-        <CustomTextInput
-          onChangeText={password => this.setState({ password })}
-          placeholder="Sua senha"
-          secureTextEntry={true}
-          style={styles.input}
-          error={this.state.passwordError}
-        />
-        <TouchableOpacity onPress={this.handleOnPress} style={styles.button}>
-          <Text style={styles.buttonText}>ENTRAR</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import validation from './helpers/validation'
+import CustomTextInput from './components/CustomTextInput'
+import { primaryColor } from './config/colors'
+import { authenticate } from './config/api'
+import logo from './assets/img/logo.png'
 
 const styles = StyleSheet.create({
   logo: {
@@ -83,4 +33,57 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
   },
-});
+})
+export default class App extends React.PureComponent {
+  constructor () {
+    super()
+    this.state = {
+      username: '',
+      password: '',
+    }
+  }
+
+  handleOnPress = () => {
+    const { username, password } = this.state
+    const usernameError = validation('username', username)
+    const passwordError = validation('password', password)
+
+    this.setState({
+      usernameError,
+      passwordError,
+    })
+
+    if (!usernameError && !passwordError) {
+      authenticate(this.state)
+    }
+  }
+
+  handleOnChangeText = field => value => this.setState({ [field]: value })
+
+  render () {
+    const { passwordError } = this.state
+
+    return (
+      <View style={styles.container}>
+        <Image source={logo} style={styles.logo} />
+        <CustomTextInput
+          onChangeText={this.handleOnChangeText('username')}
+          placeholder="Seu emaild"
+          style={styles.input}
+          keyboardType="email-address"
+          error={this.state.usernameError}
+        />
+        <CustomTextInput
+          onChangeText={this.handleOnChangeText('password')}
+          placeholder="Sua senha"
+          secureTextEntry
+          style={styles.input}
+          error={passwordError}
+        />
+        <TouchableOpacity onPress={this.handleOnPress} style={styles.button}>
+          <Text style={styles.buttonText}>ENTRAR</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
